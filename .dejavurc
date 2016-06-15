@@ -1,4 +1,4 @@
 {
-  "strict": false,
-  "locked": false
+  "strict": true,
+  "locked": true
 }
