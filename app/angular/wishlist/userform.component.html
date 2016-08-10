@@ -1,0 +1,6 @@
+<form (submit)="addUser(currentUser)">
+    <input type="text" [(ngModel)]="currentUser.firstName">
+    <input type="text" [(ngModel)]="currentUser.lastName">
+    <input type="text" [(ngModel)]="currentUser.email">
+    <button type="submit">{{ selUser!=null ? 'EDIT' : 'ADD' }}</button>
+</form>
