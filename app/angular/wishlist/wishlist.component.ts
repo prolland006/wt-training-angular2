@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {Component} from '@angular/core';
 import {User} from './user';
 import {UserStore} from './user';
@@ -8,25 +7,11 @@ import {UserFormComponent} from "./userform.component";
 @Component({
     directives: [UserinfoComponent,UserFormComponent],
     providers: [
-      UserStore
-=======
-
-import {Component} from '@angular/core';
-import {ROUTER_PROVIDERS, RouteConfig} from '@angular/router-deprecated';
-
-import {wishlistRouteList} from './wishlist.routes';
-
-
-@Component({
-    directives: [],
-    providers: [
-        ROUTER_PROVIDERS
->>>>>>> a040ecc354e4fd6a48ff97b484a4ce3eb028ec7a
+        UserStore
     ],
     selector: 'wt-app',
     templateUrl: require('./wishlist.component.html')
 })
-<<<<<<< HEAD
 export class WishlistComponent {
 
     currentUser:User;
@@ -83,8 +68,3 @@ export class WishlistComponent {
     }
 
 }
-=======
-@RouteConfig(wishlistRouteList)
-export class WishlistComponent {
-}
->>>>>>> a040ecc354e4fd6a48ff97b484a4ce3eb028ec7a
