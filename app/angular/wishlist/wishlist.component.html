@@ -1,4 +1,8 @@
-<wt-userform [currentUser]="currentUser" [selUser]="selUser" [userStore]="userStore"></wt-userform>
+<wt-userform
+        [user]="currentUser"
+        (userChange)="addUser($event)"
+        (userReset)="resetUser()">
+</wt-userform>
 <br>
 <div
         *ngFor="let user of userStore.userList()">
@@ -9,12 +13,12 @@
 
 
 
-    <!--
-     <div *ngIf="currentUser != null">
-        <span>{{ currentUser?.firstName }}</span>
-        <span>{{ currentUser?.lastName }}</span>
-        <span>{{ currentUser?.email }}</span>
+<!--
+ <div *ngIf="currentUser != null">
+    <span>{{ currentUser?.firstName }}</span>
+    <span>{{ currentUser?.lastName }}</span>
+    <span>{{ currentUser?.email }}</span>
 
-    </div>  -->
+</div>  -->
 
 

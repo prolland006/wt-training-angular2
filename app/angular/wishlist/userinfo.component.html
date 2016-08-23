@@ -1,3 +1,4 @@
-<span> {{user.firstName}} </span>
-<span>{{user.lastName}}</span>
-<span>{{user.email}}</span>
+<span> {{ user | pipeUserName :{maxLength:8,minSize:5,finalString:'...'} }} </span>
+
+<!-- <span>{{user.lastName}}</span>
+<span>{{user.email}}</span> -->

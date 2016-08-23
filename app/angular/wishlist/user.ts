@@ -1,5 +1,4 @@
-
-
+//import {Injectable} from "@angular/core";
 type Email = string;
 type UserSchema = {firstName?: string, lastName?: string, email?: Email, birthday?: Date};
 
@@ -9,12 +8,14 @@ export class User {
     lastName: string;
     email: Email;
     birthday: Date;
+    id:string;
 
-    constructor({firstName = null, lastName = null, email = null, birthday = null}: UserSchema) {
+    constructor({firstName = null, lastName = null, email = null, birthday = null, id=null}: UserSchema) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.birthday = birthday;
+        this.id = id;
     }
 
     isEqual(user: User) {
@@ -44,8 +45,13 @@ interface IUserStore {
 
 }
 
+//@Injectable()
 export class UserStore implements IUserStore {
-
+/*
+    static Providers {
+        Http
+    }
+*/
     private _userList: User[] = [];
 
     addUser(user: User): void {

@@ -30,6 +30,7 @@ require('@angular/http');
 require('rxjs/add/operator/map');
 
 require('phantomjs-polyfill');
+require('whatwg-fetch');
 
 var testing = require('@angular/core/testing');
 var browser = require('@angular/platform-browser-dynamic/testing');
@@ -50,7 +51,7 @@ Object.assign(global, testing);
  any file that ends with spec.js and get its path. By passing in true
  we say do this recursively
  */
-var testContext = require.context('.', true, /\.spec\.ts/);
+var testContext = require.context('../../app/angular', true, /\.spec\.ts/);
 
 // get all the files, for each file, call the context function
 // that will require the file and load it up here. Context will

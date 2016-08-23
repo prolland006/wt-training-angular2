@@ -6,17 +6,19 @@ import {UserFormComponent} from "./userform.component";
 
 @Component({
     directives: [UserinfoComponent,UserFormComponent],
+    providers: [
+      UserStore
+    ],
     selector: 'wt-app',
     templateUrl: require('./wishlist.component.html')
 })
 export class WishlistComponent {
 
-    currentUser:User=new User("");
-    selUser:null;
+    currentUser:User;
     userStore:UserStore= new UserStore();
-    buttonLabel:String="ADD";
 
     constructor() {
+        this.currentUser=null;
         let us1 = new User({
             firstName: 'Foo',
             lastName: 'BAR',
@@ -38,12 +40,26 @@ export class WishlistComponent {
         console.log( this.userStore.userList());
     }
 
+    resetUser() {
+        console.log('reset user');
+        this.currentUser=new User("");
+    }
+
+    addUser(user:User) {
+        console.log('add user');
+        if (this.currentUser==null) {
+            console.log('userstore.add user');
+            this.userStore.addUser(user);
+        } else {
+            console.log('userstore.replace user');
+            this.userStore.replaceUser(this.currentUser, user);
+        }
+        this.currentUser=null;
+    }
 
 
     editUser(user:User) {
-        this.currentUser=new User(user);
-        this.selUser=user;
-        this.buttonLabel="SAVE";
+        this.currentUser=user;
     }
 
     removeUser(user:User) {

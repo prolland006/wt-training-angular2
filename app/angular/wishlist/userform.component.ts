@@ -1,25 +1,39 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, OnChanges, EventEmitter} from '@angular/core';
 import {User} from './user';
-import {UserStore} from './user';
 
 @Component({
     selector: 'wt-userform',
-    templateUrl: require('./userform.component.html')
+    templateUrl: require('./userform.component.html'),
+    /*encapsulation : ViewEncapsulation.None,  //css que sur cette page
+    style : [
+        require('...css')
+    ]*/
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnChanges {
 
-    @Input() currentUser:User;
-    @Input() selUser:User;
-    @Input() userStore:UserStore;
+    @Input() user:User;
+    @Output() userChange = new EventEmitter<User>();
+    @Output() userReset = new EventEmitter();
 
-    addUser(user:User) {
-        if (this.selUser!=null) {
-            console.log("replace");
-            this.userStore.replaceUser(this.selUser,this.currentUser);
-        } else {
-            this.userStore.addUser(user);
+    resetUser() {
+        console.log("resetUser");
+        /** modification output*/
+        this.userReset.emit(null);
+    }
+
+    saveUser(user:User) {
+        console.log(user.firstName);
+        console.log("saveUser"+user.firstName);
+        /** modification output*/
+        this.userChange.emit(user);
+    }
+
+    /** callback changement du composant parent*/
+    ngOnChanges(changes) {
+        if (changes.user) {
+            console.log('change');
+            this.user = new User(changes.user.currentValue || {});
         }
-        this.selUser=null;
-        this.currentUser=new User("");
+
     }
 }
