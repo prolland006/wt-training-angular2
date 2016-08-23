@@ -1,0 +1,18 @@
+<wt-user-edit
+        [disabled]="formDisabled"
+        [user]="editedUser"
+        (userChange)="onUserAdd({user: $event})"></wt-user-edit>
+
+<div *ngFor="let user of userList; trackBy:user?.id">
+
+    <wt-user-display [user]="user"></wt-user-display>
+
+    <a [routerLink]="['../UserDetail', {userId: user.id}]">
+        <button type="button">EDIT</button>
+    </a>
+
+    <button
+            (click)="removeUser({user: user})"
+            type="button">REMOVE</button>
+
+</div>
